@@ -24,7 +24,15 @@ public function db_connect()
     ];
     $this->pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
   } catch (\PDOException $e) {
-     die("La conexión a la base de datos falló: " . $e->getMessage());
+     $error_message = $e->getMessage();
+     // Buscamos el archivo db_error.php en la raíz
+     $error_page = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'db_error.php';
+     if (file_exists($error_page)) {
+         include($error_page);
+     } else {
+         die("La conexión a la base de datos falló: " . $error_message);
+     }
+     exit;
   }
 }
 

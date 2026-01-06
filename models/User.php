@@ -46,4 +46,12 @@ class User extends BaseModel {
         $sql = "UPDATE {$this->table} SET image = ? WHERE id = ?";
         return $this->db->query_prepared($sql, [$image, $id]);
     }
+    public function allJoined() {
+        $sql = "SELECT u.id,u.name,u.username,u.user_level,u.status,u.last_login,";
+        $sql .="g.group_name ";
+        $sql .="FROM {$this->table} u ";
+        $sql .="LEFT JOIN user_groups g ";
+        $sql .="ON g.group_level=u.user_level ORDER BY u.name ASC";
+        return find_by_sql($sql);
+    }
 }

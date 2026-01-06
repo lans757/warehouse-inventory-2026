@@ -68,14 +68,13 @@ function count_by_id($table){
 /*--------------------------------------------------------------*/
 function tableExists($table){
   global $db;
-  $table_exit = $db->query_prepared('SHOW TABLES FROM '.DB_NAME.' LIKE ?', [$table]);
-      if($table_exit) {
-        if($db->num_rows($table_exit) > 0)
-              return true;
-         else
-              return false;
-      }
+  $sql = "SELECT table_name FROM information_schema.tables WHERE table_schema = ? AND table_name = ? LIMIT 1";
+  $stmt = $db->query_prepared($sql, [DB_NAME, $table]);
+  if ($stmt && $db->num_rows($stmt) > 0) {
+      return true;
   }
+  return false;
+}
  /*--------------------------------------------------------------*/
  /* Iniciar sesión con los datos proporcionados en $_POST,
  /* provenientes del formulario de inicio de sesión.

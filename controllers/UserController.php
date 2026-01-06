@@ -12,7 +12,7 @@ class UserController extends BaseController {
 
     public function index() {
         page_require_level(1);
-        $all_users = join_user_table();
+        $all_users = $this->userModel->allJoined();
         return [
             'page_title' => 'Lista de usuarios',
             'all_users' => $all_users

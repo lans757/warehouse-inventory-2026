@@ -17,8 +17,8 @@
         <div class="form-group">
           <label for="status">Estado</label>
             <select class="form-control" name="status">
-              <option <?php if($e_group['group_status'] === '1') echo 'selected="selected"';?> value="1"> Activo </option>
-              <option <?php if($e_group['group_status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
+              <option <?php if($e_group['group_status'] == '1') echo 'selected="selected"';?> value="1"> Activo </option>
+              <option <?php if($e_group['group_status'] == '0') echo 'selected="selected"';?> value="0">Inactivo</option>
             </select>
         </div>
         <div class="form-group clearfix">
