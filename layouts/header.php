@@ -1,13 +1,14 @@
 <?php $user = current_user(); ?>
 <!DOCTYPE html>
-  <html lang="en">
+  <html lang="es">
     <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="<?php echo $session->generate_csrf_token(); ?>">
     <title><?php if (!empty($page_title))
            echo remove_junk($page_title);
             elseif(!empty($user))
            echo ucfirst($user['name']);
-            else echo "Simple inventory System";?>
+            else echo "Sistema de inventario";?>
     </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
@@ -32,19 +33,19 @@
               <li>
                   <a href="profile.php?id=<?php echo (int)$user['id'];?>">
                       <i class="glyphicon glyphicon-user"></i>
-                      Profile
+                      Perfil
                   </a>
               </li>
              <li>
                  <a href="edit_account.php" title="edit account">
                      <i class="glyphicon glyphicon-cog"></i>
-                     Settings
+                     Configuración
                  </a>
              </li>
              <li class="last">
                  <a href="logout.php">
                      <i class="glyphicon glyphicon-off"></i>
-                     Logout
+                     Salir
                  </a>
              </li>
            </ul>
@@ -55,15 +56,15 @@
     </header>
     <div class="sidebar">
       <?php if($user['user_level'] === '1'): ?>
-        <!-- admin menu -->
+        <!-- Menu de Admin -->
       <?php include_once('admin_menu.php');?>
 
       <?php elseif($user['user_level'] === '2'): ?>
-        <!-- Special user -->
+        <!-- Menu de Especial -->
       <?php include_once('special_menu.php');?>
 
       <?php elseif($user['user_level'] === '3'): ?>
-        <!-- User menu -->
+        <!-- Menu de Usuario -->
       <?php include_once('user_menu.php');?>
 
       <?php endif;?>
