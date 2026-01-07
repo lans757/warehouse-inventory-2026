@@ -44,7 +44,7 @@
                 <td class="text-center"> <?php echo read_date($product['date']); ?></td>
                 <td class="text-center">
                   <div class="btn-group">
-                    <a href="edit_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-info btn-xs"  title="Editar" data-toggle="tooltip">
+                    <a href="edit_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-primary btn-xs"  title="Editar" data-toggle="tooltip">
                       <span class="glyphicon glyphicon-edit"></span>
                     </a>
                     <a href="delete_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-danger btn-xs"  title="Eliminar" data-toggle="tooltip">
