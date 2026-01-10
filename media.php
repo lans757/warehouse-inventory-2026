@@ -37,10 +37,15 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <input type="file" name="file_upload" multiple="multiple" class="btn btn-primary btn-file"/>
+                    <label for="file_upload" class="btn btn-primary" style="border-radius: 5px;">
+                      <i class="glyphicon glyphicon-folder-open"></i> Seleccionar
+                      <input type="file" name="file_upload" id="file_upload" multiple="multiple" style="display: none;">
+                    </label>
                  </span>
 
-                 <button type="submit" name="submit" class="btn btn-default">Subir</button>
+                 <button type="submit" name="submit" class="btn btn-success" style="margin-left: 10px; border-radius: 5px;">
+                   <i class="glyphicon glyphicon-cloud-upload"></i> Subir
+                 </button>
                </div>
               </div>
              </form>
